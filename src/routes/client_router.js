@@ -21,7 +21,7 @@ clientRouter.post(
 clientRouter.get(
   "/customers/:id",
   isAuthenticated,
-  authorizeRoles("admin", "master", "manager"),
+  authorizeRoles("admin", "master", "manager"),  
   customerController.fetch
 );
 

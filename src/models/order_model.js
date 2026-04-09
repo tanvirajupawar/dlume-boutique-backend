@@ -184,11 +184,11 @@ orderSchema.pre("save", async function (next) {
       const lastOrder = await this.constructor
         .findOne({ 
           storeId: this.storeId,
-          order_no: { $exists: true, $ne: null }  // only orders with valid order_no
+          order_no: { $exists: true, $ne: null }  
         })
         .sort({ createdOn: -1 })
         .select("order_no")
-        .lean();  // faster, no mongoose overhead
+        .lean();  
 
       let nextNumber = 1;
 
