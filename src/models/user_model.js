@@ -71,7 +71,7 @@ userSchema.pre("findOneAndUpdate", function (next) {
 userSchema.methods.SignAccessToken = function () {
   return jwt.sign(
     { id: this._id, storeId: this.storeId },
-    process.env.ACCESS_TOKEN || "",
+    process.env.JWT_SECRET,
     { expiresIn: "3h" }
   );
 };
@@ -81,7 +81,7 @@ userSchema.methods.SignAccessToken = function () {
 userSchema.methods.SignRefreshToken = function () {
   return jwt.sign(
     { id: this._id, storeId: this.storeId },
-    process.env.REFRESH_TOKEN || "",
+    process.env.JWT_SECRET,
     { expiresIn: "3d" }
   );
 };

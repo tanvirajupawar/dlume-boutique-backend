@@ -17,7 +17,7 @@ exports.isAuthenticated = CatchAsyncError(async (req, res, next) => {
   const access_token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(access_token, process.env.ACCESS_TOKEN);
+    const decoded = jwt.verify(access_token, process.env.JWT_SECRET);
 
     const user = await UserModel.findById(decoded.id).select("-password");
 
